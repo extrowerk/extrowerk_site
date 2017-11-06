@@ -1,0 +1,14 @@
+@font-face {
+	font-family: 'extrowerk';
+	src:url('../fonts/extrowerk.eot?-xxmbcu');
+	src:url('../fonts/extrowerk.eot?#iefix-xxmbcu') format('embedded-opentype'),
+		url('../fonts/extrowerk.woff?-xxmbcu') format('woff'),
+		url('../fonts/extrowerk.ttf?-xxmbcu') format('truetype'),
+		url('../fonts/extrowerk.svg?-xxmbcu#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	}
+
+.intro-header .site-heading h1 {
+  font-family: 'extrowerk';
+}
