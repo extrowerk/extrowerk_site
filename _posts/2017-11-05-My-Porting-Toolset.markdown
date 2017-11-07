@@ -13,23 +13,23 @@ This is a short blogpost about the tools and scripts what prooved to be useful d
 
 ## The Silver Searcher
 
-Have you ever had to grep hundreds of Mb source code? Then you know how painfully slow is it. But it doesn't have to be slow. I'd like to introduce "ag" to you, the command line program, known as "The Silver Searcher" too.
-ag using optimized code to search for the required string in big bunch of code, and it can use regex too.
-So many scripts in my toolset using directly or indirectly "ag" because its speed. 
+Have you ever had to grep hundreds of Mb source code? Then you know how painfully slow it is. But the good news: it doesn't have to be slow. I'd like to introduce "ag" to you, the command line program known as "The Silver Searcher" too.
+"ag" using optimized code to search for the required string in big bunch of code, it inteligently excludes irrelevant files and it can use regex too.
+Because its speed many scripts in my toolset using directly or indirectly "ag".
 
 ---------
 
 ## ZSH / Fish
 
-Hovewer i'm okay with bash (at least since i studied a book about it), there is yet friendlier shells available for Haiku too, with plenty extensibility. As almost every shell script start with sh or bash shebang, and as only bash provides "sh" they can coxist and using an alternative shell means you get only the pros, never the cons. You have to configure them for your workflow, but it is a small price.
+Hovewer i'm okay with bash (at least since i studied a book about it), there is some friendlier shells available for Haiku with great extensibility. As almost every shell script start with sh or bash shebang and as only bash provides "sh", they can coxist and using an alternative shell means you get only the pros, never the cons. You have to configure them for your workflow, but it is a small price.
 
-For example, you can CTRL-R in bash to recall a command from bash history, in fish you can just start typing and it will try to complete your command. If there are more possible matches you can select the correct one with UP and DOWN arrow keys.  With some moudels you can replicate this functionality in zsh too.
+For example, while you can `CTRL-R` in bash to recall a command from bash history, in fish you can just start typing and it will try to complete your command. If there are more possible matches you can select the correct one with `UP` and `DOWN` arrow keys.  With some modules you can replicate this functionality in zsh too.
 
 ---------
 
 ### "ag" script:
 
-This is a really simple wrapper to ag, predefines some switches, so it will highlight the matches, cuts the long lines at 70 chars and prints the line numbers too.
+This is a really simple wrapper to ag, predefines some optional switches, so it will highlight the matches, cuts the long lines at 70 chars and prints the line numbers too.
 
 The cool thing is, i don't need to supply any PATH or filename, it will automatically and recursively search in all the files and folders in the current work folder.
 
@@ -45,13 +45,13 @@ Example:
 
 ### "inrecipe" script:
 
-Working with HaikuPorts tree is not easy ride. We try to follow the Gentoo Portage and the Arch AUR logical folder structure, but some recipes still resides in unreasonable places. To find them i have to "ag" trough the whole tree, but i let ag analyze only the files with "recipe" extension, so it won't go reursively in "work" folders.
-If i update a port and want to know which other ports depending on it, i can easily "grep" the recipes.
+Working with the HaikuPorts tree is not easy ride. We try to follow the Gentoo Portage and the Arch AUR logical folder structure, but some recipes still resides in unreasonable places. To find them I have to "ag" trough the whole tree, but i let ag analyze only the files with "recipe" extension and it won't go recursively in "work" folders to spare time.
 
 	function inrecipe {
 		/bin/ag $argv /Ports/haikuports -G recipe --ignore "work*"
 		}
 
+If i update a port and want to know which other ports depending on it, i can easily "grep" the recipes.
 So if i work on "libSDL" i can get the depending ports like:
 
 `# inrecipe libSDL`
